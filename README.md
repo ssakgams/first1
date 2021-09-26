@@ -73,3 +73,55 @@ public class Board {
 		}
 	
 }
+
+	
+package model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Cell {
+
+	private Stone 놓인돌 = null;
+	
+private List<Line> lines = new ArrayList<>();
+	
+	public void addline(Line line) {
+		lines.add(line);
+		
+	}
+	
+	public int getAttachecLineCount() {
+		return lines.size();
+	}
+}
+
+package model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Line {
+	
+	private List<Cell> cells = new ArrayList<>();
+	
+	public void addCell(Cell  cell) {
+		cells.add(cell);
+		cell.addline(this);
+	}
+}
+
+
+package model;
+
+public enum Stone {
+	
+	Black('O'), White('X');
+	
+	private char shape;
+
+	private Stone(char shape) {
+		this.shape = shape;
+	}
+	
+}
